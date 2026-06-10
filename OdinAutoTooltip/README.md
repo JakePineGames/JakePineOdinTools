@@ -105,6 +105,8 @@ public float damage = 10f;
 [Tooltip(null)]
 public float hiddenTuning = 1f;
 ```
+<img width="443" height="48" alt="image" src="https://github.com/user-attachments/assets/a2562201-ca8f-4a21-bf3f-4401d12c80b9" />
+
 
 ### Summary and attributes (either order)
 
