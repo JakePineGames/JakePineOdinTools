@@ -1,6 +1,6 @@
 # OdinAutoTooltip
 
-**Applies Unity `TooltipAttribute` automatically to Odin inspector members from XML `<summary>` doc comments in source or member name.**
+**Applies Unity `TooltipAttribute` automatically to Odin inspector members from XML `<summary>` doc comments in source (or member name as fallback).** Write the summary once and IDE documentation and inspector tooltips stay in sync — no need to duplicate text in `[Tooltip("...")]`. When inspector text should differ, add an explicit `[Tooltip("...")]`.
 
 _Requires **Odin Inspector** (Sirenix). Unity 2021+ / C# 9+._
 
@@ -8,7 +8,7 @@ _Requires **Odin Inspector** (Sirenix). Unity 2021+ / C# 9+._
 
 ## How it works
 
-For each inspector member, if there is no existing `TooltipAttribute` or Odin `PropertyTooltipAttribute`, the processor applies a tooltip from the member's `/// <summary>` in source (when `USE_SUMMARIES` is on), or from the **member name** as a fallback (when `USE_SUMMARIES` is on or off and `USE_MEMBER_NAME` is on).
+For each inspector member, if there is no existing `TooltipAttribute` or Odin `PropertyTooltipAttribute`, the processor applies a tooltip from the member's `/// <summary>` in source (when `USE_SUMMARIES` is on), or from the **member name** as a fallback (when `USE_SUMMARIES` is on or off and `USE_MEMBER_NAME` is on). Any member that already has `TooltipAttribute` or `PropertyTooltipAttribute` is left alone — including `[Tooltip(null)]`, which opts out of auto-generation and shows no hover text.
 
 Source parsing looks backward from the member declaration for a `/// <summary>` block. Attributes, preprocessor directives, and `//` comments may appear between the summary and the member (`summary → attributes → member` and `attributes → summary → member` both work).
 
@@ -85,9 +85,11 @@ public int maxHealth = 100;
 
 `<see cref="TypeName"/>` tags are stripped to the short type name (`minHealth` in the example above). Other XML tags are removed; text is collapsed to a single line.
 
-### Explicit tooltip wins
+### Overriding auto-tooltips
 
-Members that already have `TooltipAttribute` or `PropertyTooltipAttribute` are left alone.
+Members that already have `TooltipAttribute` or `PropertyTooltipAttribute` are skipped — the processor does not replace them.
+
+**Different inspector text** — keep the summary for IDE docs, override what the inspector shows:
 
 ```csharp
 /// <summary>This summary is ignored for the tooltip.</summary>
@@ -96,6 +98,13 @@ public float damage = 10f;
 ```
 <img width="486" height="43" alt="image" src="https://github.com/user-attachments/assets/82ca0b0d-2c17-4ee8-b511-6b6441986fed" />
 
+**No inspector tooltip** — keep the summary for IDE docs, suppress hover text in the inspector:
+
+```csharp
+/// <summary>Internal tuning value; documented in code only.</summary>
+[Tooltip(null)]
+public float hiddenTuning = 1f;
+```
 
 ### Summary and attributes (either order)
 

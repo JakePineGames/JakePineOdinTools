@@ -43,11 +43,15 @@ public class OdinAutoTooltipSample : MonoBehaviour
     /// </summary>
     public int maxHealth = 100;
 
-    // ── Explicit tooltip wins ───────────────────────────────────────────────────────────────────
+    // ── Overriding auto-tooltips ────────────────────────────────────────────────────────────────
 
     /// <summary>This summary is ignored for the tooltip.</summary>
     [Tooltip("Shown in the inspector instead.")]
     public float damage = 10f;
+
+    /// <summary>Internal tuning value; documented in code only.</summary>
+    [Tooltip(null)]
+    public float hiddenTuning = 1f;
 
     // ── Summary and attributes (either order) ─────────────────────────────────────────────────
 
