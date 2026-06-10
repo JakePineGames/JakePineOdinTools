@@ -4,6 +4,27 @@ Editor plugins for [Odin Inspector](https://odininspector.com/) (Sirenix) that r
 
 ---
 
+## Plugins
+
+- **[OdinBatch](OdinBatch/README.md)** — propagate Odin/Unity inspector attributes across members using `BatchBegin` / `BatchEnd` markers in source.
+- **[OdinAutoTooltip](OdinAutoTooltip/README.md)** — apply `TooltipAttribute` from XML `/// <summary>` doc comments.
+
+See each plugin’s README for installation details, examples, and options.
+
+---
+
+### What to keep
+
+| Folder | Required? |
+|---|---|
+| **OdinSource** | **Yes** — if you use any plugin below |
+| **OdinBatch** | No — delete if you do not need batch attributes |
+| **OdinAutoTooltip** | No — delete if you do not need auto-tooltips |
+
+If you remove a plugin folder, leave **OdinSource** in place. Both plugins share one source-line cache through `OdinSourceFileHelper`.
+
+---
+
 ## Folder structure
 
 Copy the entire `JakePineOdinTools` folder into your project (for example `Assets/Plugins/JakePineOdinTools`):
@@ -24,26 +45,6 @@ JakePineOdinTools/
     ├── README.md
     └── Editor/
 ```
-
-### What to keep
-
-| Folder | Required? |
-|---|---|
-| **OdinSource** | **Yes** — if you use any plugin below |
-| **OdinBatch** | No — delete if you do not need batch attributes |
-| **OdinAutoTooltip** | No — delete if you do not need auto-tooltips |
-
-If you remove a plugin folder, leave **OdinSource** in place. Both plugins share one source-line cache through `OdinSourceFileHelper`.
-
----
-
-## Plugins
-
-- **[OdinBatch](OdinBatch/README.md)** — propagate Odin/Unity inspector attributes across members using `BatchBegin` / `BatchEnd` markers in source.
-- **[OdinAutoTooltip](OdinAutoTooltip/README.md)** — apply `TooltipAttribute` from XML `/// <summary>` doc comments.
-
-See each plugin’s README for installation details, examples, and options.
-
 ---
 
 ## Requirements
