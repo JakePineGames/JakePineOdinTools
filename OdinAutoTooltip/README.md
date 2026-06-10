@@ -1,6 +1,6 @@
 # OdinAutoTooltip
 
-**Applies Unity `TooltipAttribute` to Odin inspector members from XML `<summary>` doc comments in source.**
+**Applies Unity `TooltipAttribute` automatically to Odin inspector members from XML `<summary>` doc comments in source or member name.**
 
 _Requires **Odin Inspector** (Sirenix). Unity 2021+ / C# 9+._
 
