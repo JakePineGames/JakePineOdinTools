@@ -72,7 +72,7 @@ public float statThree = 30f;
 
 public float afterStats;
 ```
-<img width="469" height="110" alt="image" src="https://github.com/user-attachments/assets/4d75dbee-10ff-454a-8ec8-3a92134ac143" />
+<img width="469" height="110" alt="image" src="https://github.com/user-attachments/assets/ddc6e08e-ce50-4596-ae4f-a2154ad7f246" />
 
 
 ### Empty-name batch
@@ -89,7 +89,8 @@ public int defaultsThree;
 
 public int afterDefaults;
 ```
-<img width="470" height="109" alt="image" src="https://github.com/user-attachments/assets/1f325bfd-b2cf-4fa3-bf6f-e79d4fbedcd7" />
+<img width="470" height="109" alt="image" src="https://github.com/user-attachments/assets/d25f9931-e842-4a84-8fe2-cf6b4c8afe08" />
+
 
 
 ### Overlapping batches
@@ -113,7 +114,7 @@ public int overlapFive;
 
 public int afterOverlap;
 ```
-<img width="466" height="154" alt="image" src="https://github.com/user-attachments/assets/4a7aee19-ff29-4abb-9584-9b3eb77a2349" />
+<img width="466" height="154" alt="image" src="https://github.com/user-attachments/assets/40da88ac-cdc4-469d-b86f-7ebf7175b279" />
 
 
 ### Close all batches at once
@@ -132,7 +133,7 @@ public int endAllThree;
 
 public int afterEndAll;
 ```
-<img width="466" height="116" alt="image" src="https://github.com/user-attachments/assets/6044b5a9-88ad-4b4b-b157-44d240a1194c" />
+<img width="466" height="116" alt="image" src="https://github.com/user-attachments/assets/4437fcd0-7c89-423f-9da3-707e577d5ca3" />
 
 
 ### Define + Apply
@@ -148,7 +149,7 @@ public string notReused;
 [BatchApply("ro")]
 public string reusedField = "same attributes as definedField";
 ```
-<img width="470" height="94" alt="image" src="https://github.com/user-attachments/assets/d7c0f297-ecf4-4abe-a04b-18b71031730a" />
+<img width="470" height="94" alt="image" src="https://github.com/user-attachments/assets/e78859de-2fda-4b19-9382-96127afb2afa" />
 
 
 ### Apply a BatchBegin name from outside its region
@@ -179,7 +180,7 @@ public float reopenedTwo;
 [BatchEnd("stats")]
 public float reopenedThree;
 ```
-<img width="470" height="193" alt="image" src="https://github.com/user-attachments/assets/5608a05c-a580-4710-b8a6-56f838337391" />
+<img width="470" height="193" alt="image" src="https://github.com/user-attachments/assets/2c64e14b-decb-4a57-9dc7-4402c60c8b6f" />
 
 
 ### Overwrite — inner batch replaces outer for the same attribute type
@@ -201,7 +202,7 @@ public int outerTwo = 100;
 
 public int afterOverwrite;
 ```
-<img width="460" height="106" alt="image" src="https://github.com/user-attachments/assets/a71dc5e6-b1d7-46fd-a310-f2d0ae9532ce" />
+<img width="460" height="106" alt="image" src="https://github.com/user-attachments/assets/524a2435-f0ea-41fb-8707-3ab948c1620e" />
 
 
 ### Odin `$` resolver
@@ -217,7 +218,7 @@ public int dynamicOne;
 [BatchEnd("dyn")]
 public int dynamicTwo;
 ```
-<img width="466" height="71" alt="image" src="https://github.com/user-attachments/assets/bb3c343c-20ac-491e-92f7-94eb2bf1cccc" />
+<img width="466" height="71" alt="image" src="https://github.com/user-attachments/assets/7e07f719-0a99-4307-9703-ce87aee5aab3" />
 
 
 ### ToggleGroup
@@ -232,7 +233,7 @@ public float toggleTwo;
 
 public int afterToggleGroup;
 ```
-<img width="464" height="93" alt="image" src="https://github.com/user-attachments/assets/15452a35-fd7b-4dd0-b9d0-bc82a9794989" />
+<img width="464" height="93" alt="image" src="https://github.com/user-attachments/assets/a69d5251-54f5-4f31-8b00-40104ce87103" />
 
 
 ### Mixing per-field attributes with batch attributes
@@ -254,7 +255,7 @@ public float mixFour = 1f;
 
 public float afterMix;
 ```
-<img width="475" height="109" alt="image" src="https://github.com/user-attachments/assets/cf737544-a841-45f7-8fe8-52cd92c81062" />
+<img width="475" height="109" alt="image" src="https://github.com/user-attachments/assets/a968ab26-fd1e-4115-81cd-4c17578c1c74" />
 
 
 ### No end — batch runs to end of class body
@@ -266,7 +267,7 @@ A batch with no `BatchEnd` propagates to every remaining member in the class bod
 public string tailOne = "stays in box";
 public string tailTwo = "also in box";
 ```
-<img width="468" height="115" alt="image" src="https://github.com/user-attachments/assets/8cafbc3d-c3bb-4c6c-b7d6-7721c95c51b3" />
+<img width="468" height="115" alt="image" src="https://github.com/user-attachments/assets/4b676b56-4f09-4355-afba-cf28ac3f546c" />
 
 
 ### Supports Different Member Types
@@ -312,7 +313,7 @@ public int stressEnd;
 
 public int afterStress;
 ```
-<img width="469" height="357" alt="image" src="https://github.com/user-attachments/assets/7a1800f1-7e59-4e2f-9080-9214b76af217" />
+<img width="469" height="357" alt="image" src="https://github.com/user-attachments/assets/31b4276e-f91e-49b6-9997-f13938200215" />
 
 
 ### Marker precedence
