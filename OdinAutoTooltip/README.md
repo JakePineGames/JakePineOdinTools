@@ -18,6 +18,8 @@ Source parsing looks backward from the member declaration for a `/// <summary>` 
 /// <summary>How fast the unit moves in world units per second.</summary>
 public float moveSpeed = 5f;
 ```
+<img width="492" height="66" alt="image" src="https://github.com/user-attachments/assets/140ab36a-3d41-47a9-bd2f-710efcda77ce" />
+
 
 ### From member name (no summary)
 
@@ -27,10 +29,7 @@ When there is no summary, the tooltip falls back to the field name. `[LabelText]
 [LabelText("Move Speed")]
 public float playerMoveSpeed = 5f;
 ```
-
-Hover shows `playerMoveSpeed`, not `Move Speed`.
-
-Source parsing only maps summaries to member names — it does not evaluate expressions or read attribute constructor arguments.
+<img width="493" height="46" alt="image" src="https://github.com/user-attachments/assets/cf6b3666-d33d-4390-b53b-5dad426f5653" />
 
 ---
 
@@ -65,6 +64,9 @@ private void ResetState()
 {
 }
 ```
+<img width="489" height="90" alt="image" src="https://github.com/user-attachments/assets/22f36e72-7845-4ff9-a3ab-8c3daf6e8461" />
+
+<img width="487" height="53" alt="image" src="https://github.com/user-attachments/assets/f3a1519b-ee16-43a9-a001-8a4ffa4d6b13" />
 
 ---
 
@@ -79,6 +81,7 @@ private void ResetState()
 /// </summary>
 public int maxHealth = 100;
 ```
+<img width="492" height="64" alt="image" src="https://github.com/user-attachments/assets/eac1cb84-5333-4602-be69-c4b3facdea36" />
 
 `<see cref="TypeName"/>` tags are stripped to the short type name (`minHealth` in the example above). Other XML tags are removed; text is collapsed to a single line.
 
@@ -91,6 +94,8 @@ Members that already have `TooltipAttribute` or `PropertyTooltipAttribute` are l
 [Tooltip("Shown in the inspector instead.")]
 public float damage = 10f;
 ```
+<img width="486" height="43" alt="image" src="https://github.com/user-attachments/assets/82ca0b0d-2c17-4ee8-b511-6b6441986fed" />
+
 
 ### Summary and attributes (either order)
 
@@ -106,6 +111,10 @@ public Vector3 spawnOffset;
 /// <summary>Current health points.</summary>
 public int health;
 ```
+<img width="488" height="70" alt="image" src="https://github.com/user-attachments/assets/a099502b-51bd-4d13-9fbd-df56608dc8ec" />
+
+<img width="486" height="73" alt="image" src="https://github.com/user-attachments/assets/1599f180-b550-4a5c-9db5-d7adc468b869" />
+
 
 ### Nested types
 
@@ -126,6 +135,8 @@ public class Outer
     }
 }
 ```
+<img width="481" height="132" alt="image" src="https://github.com/user-attachments/assets/0b6e9933-6732-4a08-b6a9-c5249d8065f2" />
+
 
 ---
 
@@ -179,6 +190,7 @@ public class PlaybackSettings
     public Mode mode;
 }
 ```
+<img width="489" height="98" alt="image" src="https://github.com/user-attachments/assets/eed194c1-28f1-413d-aecd-fa41aeca739c" />
 
 Auto-tooltip from XML on enum constants would require a separate feature (for example, a custom enum drawer that reads summaries from source at edit time). That is not part of this plugin today.
 
