@@ -177,11 +177,9 @@ Hovering `nestedOuter` uses member-name fallback (`nestedOuter`), not the `Outer
 
 ### Enum fields vs enum values
 
+Does not work with enum members.  Must explcitly put `[Tooltip]` on each enum member, even if same text as summary.
+
 Summaries on a **field** of enum type work as usual — the tooltip applies to the field in the inspector, not to each entry in the dropdown.
-
-Enum **constants** (`Forward`, `Reverse`, etc.) are not separate inspector properties. Odin draws them inside one enum control, so this processor is never invoked per enum value and cannot inject per-option tooltips from XML summaries alone.
-
-For dropdown option tooltips, Unity reads `[Tooltip]` compiled onto each enum member. Keep the summary for IDE docs and duplicate the same text in `[Tooltip]` on each value:
 
 ```csharp
 public enum Mode
@@ -203,7 +201,7 @@ public class PlaybackSettings
 ```
 <img width="489" height="98" alt="image" src="https://github.com/user-attachments/assets/eed194c1-28f1-413d-aecd-fa41aeca739c" />
 
-Auto-tooltip from XML on enum constants would require a separate feature (for example, a custom enum drawer that reads summaries from source at edit time). That is not part of this plugin today.
+Auto-tooltip from XML on enum members would require a separate feature (for example, a custom enum drawer that reads summaries from source at edit time). That is not part of this plugin today.
 
 ---
 
