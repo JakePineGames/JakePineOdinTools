@@ -96,9 +96,9 @@ Members that already have `TooltipAttribute` or `PropertyTooltipAttribute` are s
 [Tooltip("Shown in the inspector instead.")]
 public float damage = 10f;
 ```
-<img width="486" height="43" alt="image" src="https://github.com/user-attachments/assets/82ca0b0d-2c17-4ee8-b511-6b6441986fed" />
+<img width="486" height="43" alt="image" src="https://github.com/user-attachments/assets/82ca0b0d-2c17-4ee8-b511-6b6441986fed" /><br>
 
-**No inspector tooltip** — keep the summary for IDE docs, suppress hover text in the inspector:
+**No inspector tooltip** — keep the summary for IDE docs, suppress auto tooltip generation in the inspector:
 
 ```csharp
 /// <summary>Internal tuning value; documented in code only.</summary>
