@@ -19,6 +19,10 @@ public static class OdinSourceFileHelper
 {
     private static readonly Dictionary<Type, string[]> sourceLinesCache = new Dictionary<Type, string[]>();
 
+    // Lazy full-project type-name → absolute file path index. Built once on the first miss of the
+    // name-based search, then reused for all subsequent lookups. Cleared on assembly reload.
+    private static Dictionary<string, string> typeToFileIndex = null;
+
     private static readonly Regex typeDefinitionRegex = new Regex(
         @"\b(class|struct|enum|interface)\s+(\w+)",
         RegexOptions.Compiled);
@@ -48,6 +52,7 @@ public static class OdinSourceFileHelper
     public static void ClearCache()
     {
         sourceLinesCache.Clear();
+        typeToFileIndex = null;
     }
 
     public static string[] GetSourceLines(Type type)
@@ -159,7 +164,41 @@ public static class OdinSourceFileHelper
             }
         }
 
+        // Last resort: full-project index. Built once and cached so subsequent lookups are O(1).
+        Dictionary<string, string> index = GetOrBuildTypeIndex();
+        if (index.TryGetValue(typeName, out string indexedPath))
+            return indexedPath;
+
         return null;
+    }
+
+    private static Dictionary<string, string> GetOrBuildTypeIndex()
+    {
+        if (typeToFileIndex != null)
+            return typeToFileIndex;
+
+        typeToFileIndex = new Dictionary<string, string>(StringComparer.Ordinal);
+        string[] allGuids = AssetDatabase.FindAssets("t:MonoScript");
+        for (int i = 0; i < allGuids.Length; i++)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(allGuids[i]);
+            string fullPath = Path.GetFullPath(assetPath);
+            if (!File.Exists(fullPath))
+                continue;
+            try
+            {
+                string content = File.ReadAllText(fullPath);
+                foreach (Match match in typeDefinitionRegex.Matches(content))
+                {
+                    string name = match.Groups[2].Value;
+                    // First file wins — consistent with the rest of FindSourceFile.
+                    if (!typeToFileIndex.ContainsKey(name))
+                        typeToFileIndex[name] = fullPath;
+                }
+            }
+            catch { }
+        }
+        return typeToFileIndex;
     }
 
     public static string GetTypeKey(Type type)
